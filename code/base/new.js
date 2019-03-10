@@ -1,4 +1,5 @@
-构造函数没有返回值 {
+// 构造函数没有返回值 
+{
     function TestNew(name) {
         this.name = name
         console.log(this); // TestNew { name: 'jack' }

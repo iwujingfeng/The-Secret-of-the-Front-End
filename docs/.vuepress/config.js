@@ -76,21 +76,19 @@ module.exports = {
     docsDir: "docs",
     editLinkText: "在 GitHub 上编辑此页",
     lastUpdated: "上次更新",
-    nav: [
-      {
-        text: "上篇",
+    nav: [{
+        text: "核心技术",
         link: "/base/"
       },
       {
-        text: "中篇",
+        text: "高级进阶",
         link: "/compare/"
       }
     ],
     sidebarDepth: 2,
     sidebar: {
       // 根路径 上篇
-      "/base/": [
-        {
+      "/base/": [{
           title: "HTML强化",
           collapsable: false,
           children: ["", "html-codegen"]
@@ -103,12 +101,11 @@ module.exports = {
         {
           title: "JS强化",
           collapsable: false,
-          children: ["js-new", "js-parse"]
+          children: ["js-new", "js-type", "js-array-no-repeat"]
         }
       ],
       // 比较学习
-      "/compare/": [
-        {
+      "/compare/": [{
           title: "HTML强化",
           collapsable: false,
           children: ["html-codegen"]
@@ -121,7 +118,7 @@ module.exports = {
         {
           title: "JS强化",
           collapsable: false,
-          children: ["js-new", "js-parse"]
+          children: ["js-parse"]
         }
       ]
       // 框架 工程化

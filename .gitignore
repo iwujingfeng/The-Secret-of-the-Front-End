@@ -2,5 +2,5 @@
 node_modules
 dist
 example/
-docs/
+# docs/
 .DS_Store

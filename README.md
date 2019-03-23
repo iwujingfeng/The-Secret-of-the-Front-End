@@ -1,16 +1,7 @@
----
-home: true
-# heroImage: /hero.png
-actionText: 马上阅读 →
-actionLink: /core/
-features:
-  - title: 上篇-核心技术
-    details: 主要梳理前端三大件技术 HTML、CSS、JavaScript 的各种难点（参考各类经典书籍并结合自己的开发经验）。
-  - title: 中篇-求同存异
-    details: 以对比的方法，对前端技术中的各种相似疑难特性进行深入的分析，彻底吃透容易混淆的技术点，拓宽思路。
-  - title: 下篇-周边技术
-    details: 深入分析前端相关技术，如 Vue技术栈、Webpack、Babel、TypeScript 等技术的难点和原理；
-footer: MIT Licensed | Copyright © 2019-present iwujingfeng
----
+<h1 align="center">前端核心技术与应用场景揭秘</h1>
+<h4 align="center">一本系统梳理前端核心技术难点的小书，以实际应用场景带你走上蜕变之旅</h4>
 
-<!-- 开屏首页 -->
+## 希望我的付出能让大家有所收获 也希望我能得到大家的一点小小的认可 :tea:
+
+<img :src="$withBase('/assets/wxpay.png')" style="height:200px;margin-top:30px;margin-right:80px">
+<img :src="$withBase('/assets/alipay.jpg')" style="height:200px;margin-top:30px;">

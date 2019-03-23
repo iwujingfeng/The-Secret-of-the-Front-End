@@ -2,7 +2,7 @@
 home: true
 # heroImage: /hero.png
 actionText: 马上阅读 →
-actionLink: /base/
+actionLink: /core/
 features:
   - title: 上篇-核心技术
     details: 主要梳理前端三大件技术 HTML、CSS、JavaScript 的各种难点（参考各类经典书籍并结合自己的开发经验）。

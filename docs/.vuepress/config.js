@@ -1,8 +1,8 @@
 module.exports = {
   base: "/the-secret-of-the-front-end/",
   dest: "dist",
-  title: "前端核心技术揭秘",
-  description: "全面系统的前端进阶知识文档",
+  title: "前端核心技术与应用场景揭秘",
+  description: "从实际应用场景出发，彻底掌握核心技术",
   head: [
     [
       "link",
@@ -71,56 +71,34 @@ module.exports = {
   ],
   serviceWorker: false,
   themeConfig: {
-    // repo: 'ustbhuangyi/vue-analysis',
+    repo: 'iwujingfeng/The-Secret-of-the-Front-End', // 右上角GitHub
     editLinks: true,
     docsDir: "docs",
     editLinkText: "在 GitHub 上编辑此页",
     lastUpdated: "上次更新",
     nav: [{
         text: "核心技术",
-        link: "/base/"
+        link: "/core/"
       },
       {
-        text: "高级进阶",
-        link: "/compare/"
+        text: "应用场景",
+        link: "/scene/"
       }
     ],
     sidebarDepth: 2,
     sidebar: {
-      // 根路径 上篇
-      "/base/": [{
-          title: "HTML强化",
-          collapsable: false,
-          children: ["", "html-codegen"]
-        },
-        {
-          title: "CSS强化",
-          collapsable: false,
-          children: ["css-entrance", "css-optimize"]
-        },
-        {
-          title: "JS强化",
-          collapsable: false,
-          children: ["js-new", "js-type", "js-array-no-repeat"]
-        }
-      ],
+      // 根路径 上篇 核心技术
+      "/core/": [{
+        title: "核心技术",
+        collapsable: false,
+        children: ["new", "prototype-inherit", "object"]
+      }],
       // 比较学习
-      "/compare/": [{
-          title: "HTML强化",
-          collapsable: false,
-          children: ["html-codegen"]
-        },
-        {
-          title: "CSS强化",
-          collapsable: false,
-          children: ["css-entrance", "css-optimize"]
-        },
-        {
-          title: "JS强化",
-          collapsable: false,
-          children: ["js-parse"]
-        }
-      ]
+      "/scene/": [{
+        title: "应用场景",
+        collapsable: false,
+        children: ["type", "js-array-no-repeat"]
+      }]
       // 框架 工程化
     }
   }

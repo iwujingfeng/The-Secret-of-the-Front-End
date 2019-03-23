@@ -1,29 +1,29 @@
 {
-  "name": "the-secret-of-the-front-end",
+  "name": "The-Secret-of-the-Front-End",
   "version": "1.0.0",
-  "description": "the-secret-of-the-front-end",
+  "description": "the secret of the front-end",
   "directories": {
     "doc": "doc"
   },
   "scripts": {
     "dev": "vuepress dev docs",
     "build": "vuepress build docs",
-    "deploy": "sh build.sh"
+    "deploy": "bash deploy.sh"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ustbhuangyi/vue-analysis.git"
+    "url": "git+https://github.com/iwujingfeng/The-Secret-of-the-Front-End.git"
   },
   "keywords": [
     "vue",
-    "analysis"
+    "Secret"
   ],
   "author": "iwujingfeng",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ustbhuangyi/vue-analysis/issues"
+    "url": "https://github.com/iwujingfeng/The-Secret-of-the-Front-End/issues"
   },
-  "homepage": "https://github.com/ustbhuangyi/vue-analysis#readme",
+  "homepage": "https://github.com/iwujingfeng/The-Secret-of-the-Front-End#readme",
   "devDependencies": {
     "vuepress": "^0.14.10"
   }

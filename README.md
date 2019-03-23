@@ -12,6 +12,8 @@
 
 项目已经在[Github](https://github.com/iwujingfeng/The-Secret-of-the-Front-End)开源。愿我们都能在技术路上不再孤单，总结，反思，精进，逐步提升自己的核心技术层次，成为专家级的前端开发工程师，共勉！ -->
 
+---
+
 home: true
 
 # heroImage: /hero.png

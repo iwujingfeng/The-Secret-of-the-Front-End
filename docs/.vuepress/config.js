@@ -1,6 +1,6 @@
 module.exports = {
   base: "/The-Secret-of-the-Front-End/",
-  dest: "dist",
+  dest: "docs/.vuepress/dist",
   title: "前端核心技术与应用场景揭秘",
   description: "从实际应用场景出发，彻底掌握核心技术",
   head: [

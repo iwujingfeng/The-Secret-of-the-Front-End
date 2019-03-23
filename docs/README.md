@@ -14,5 +14,3 @@ footer: MIT Licensed | Copyright © 2019-present iwujingfeng
 ---
 
 <!-- 开屏首页 -->
-
-<Svg/>

@@ -97,3 +97,8 @@ console.log(myNonObj instanceof Object); // 这种方法创建的对象不是Obj
 ```
 
 ```
+
+### 我愿与你共享知识 可否陪我共饮香茗 :tea:
+
+<img :src="$withBase('/assets/wxpay.png')" style="height:200px;margin-top:30px;margin-right:80px">
+<img :src="$withBase('/assets/alipay.jpg')" style="height:200px;margin-top:30px;">

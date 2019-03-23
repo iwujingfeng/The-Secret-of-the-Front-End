@@ -104,3 +104,8 @@ t.getName(); // jack
 分析：
 注释 01：初始化一个空实例对象 作为 new 的返回值；注释 02，将 instance 的原型设置为 cons 的原型 cons.prototype，实现 instance 可以访问构造函数的属性； 注释 03，args 是传递给构造函数 cons 的参数，instance 将代替 cons 里 this，注释 04，判断构造函数返回值是否是对象。
 :::
+
+### 我愿与你共享知识 可否陪我共饮香茗 :tea:
+
+<img :src="$withBase('/assets/wxpay.png')" style="height:200px;margin-top:30px;margin-right:80px">
+<img :src="$withBase('/assets/alipay.jpg')" style="height:200px;margin-top:30px;">

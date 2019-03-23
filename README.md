@@ -3,5 +3,5 @@
 
 ## 希望我的付出能让大家有所收获 也希望我能得到大家的一点小小的认可 :tea:
 
-<img :src="$withBase('/assets/wxpay.png')" style="height:200px;margin-top:30px;margin-right:80px">
-<img :src="$withBase('/assets/alipay.jpg')" style="height:200px;margin-top:30px;">
+<img :src="http://pot1f5p5j.bkt.clouddn.com/wxpay.png" style="height:200px;margin-top:30px;margin-right:80px">
+<img :src="http://pot1f5p5j.bkt.clouddn.com/alipay.jpg" style="height:200px;margin-top:30px;">

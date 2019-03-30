@@ -1,22 +1,176 @@
-// arr.some(v => { return v > 18 }) // return一个条件 返回值是布尔 用于条件判 检测数组中的元素是否满足指定条件,有一个元素满足条件，则表达式返回true , 剩余的元素不会再执行检测 如果没有满足条件的元素，则返回false。 IE9支持
-// const newArr = arr.filter(item => { return item.age > 18 }) // return一个条件 返回值是一个过滤后的新数组 用于过滤数据 IE9支持
-// arr.every(v => { return v > 18 }) // return一个条件 返回值是布尔 用于条件判断 检测数组所有元素是否都符合指定条件(必须都符合条件 不然返回false) 如果数组中检测到有一个元素不满足，则整个表达式返回 false ，且剩余的元素不会再进行检测。如果所有元素都满足条件，则返回 true。 IE9支持
-// arr.find(v => { return v > 18 }) // 返回符合条件的第一个元素 没有符合条件返回undefined IE12支持
-// arr.findIndex(v => { return v > 18 }) // 返回符合条件的第一个元素的索引 没有符合条件返回-1 IE12支持 IE12支持
-// arr.map(item => { return item.age * 18 }) // 对数组进行二次处理 格式化时间 重新计算等等 返回新数组 用于过滤数据 IE9支持
-// // 返回数据元素的平方根 numbers.map(Math.sqrt)
-// // 接口数据映射
-// let r = res.map(item => {
-//     return {
-//         title: item.name,
-//         sex: item.sex === 1? '男':item.sex === 0?'女':'保密',
-//         age: item.age,
-//         avatar: item.img
-//     }
-// })
-// http://www.runoob.com/jsref/jsref-obj-array.html
-// arr.sort((a,b)=>{return a-b}) // 数字升序
-// arr.sort((a,b)=>{return b-a}) // 数字降序
-// arr.sort(); // 字母升序
-// arr.reverse(); // 字母降序
 // arr.reduce((total,num)=>{return total + num;}) //total是初始化的总数累加
+
+{
+    const arr = [{
+        name: 'jack',
+        age: 16
+    }, {
+        name: 'jack',
+        age: 20
+    }]
+    const result = arr.some(item => {
+        return item.age > 18
+    })
+    console.log('some', result) // true
+}
+
+{
+    const arr = [{
+        name: 'jack',
+        age: 16
+    }, {
+        name: 'jack',
+        age: 20
+    }]
+    const result = arr.every(item => {
+        return item.age > 18
+    })
+    console.log('every', result) // false
+}
+
+{
+    const arr = [{
+        name: 'jack',
+        age: 16
+    }, {
+        name: 'jack',
+        age: 20
+    }]
+    const result = arr.filter(item => {
+        return item.age > 18
+    })
+    console.log('filter', result) // [ { name: 'jack', age: 20 } ]
+}
+
+{
+    const arr = [{
+        name: 'jack',
+        age: 16
+    }, {
+        name: 'jack',
+        age: 20
+    }, {
+        name: 'jack',
+        age: 30
+    }]
+    const result = arr.find(item => {
+        return item.age > 18
+    })
+    console.log('find', result) // { name: 'jack', age: 20 }
+}
+
+{
+    const arr = [{
+        name: 'jack',
+        age: 16
+    }, {
+        name: 'jack',
+        age: 20
+    }, {
+        name: 'jack',
+        age: 30
+    }]
+    const result = arr.findIndex(item => {
+        return item.age > 18
+    })
+    console.log('find', result) // 1
+}
+
+{
+    // 如果数组元素是基础数据类型
+    const arr1 = [2, 4, 5]
+    const result0 = arr1.map(item => {
+        return item * 2
+    })
+    console.log('map-0', result0) // [ 4, 8, 10 ]
+    // 如果数组元素是对象
+    const arr2 = [{
+        name: 'jack',
+        age: 16,
+        sex: 1
+    }, {
+        name: 'jack',
+        age: 20,
+        sex: 2
+    }]
+    // 情况一
+    const result = arr2.map(item => {
+        return item.age * 2
+    })
+    console.log('map-1', result) // [ 32, 40 ]
+
+    // 情况二
+    const result2 = arr2.map(item => {
+        return {
+            name: item.name,
+            age: item.age * 2,
+            sex: item.sex === 1 ? '男' : item.sex === 2 ? '女' : '保密'
+        }
+    })
+    console.log('map-2', result2)
+    // [ { name: 'jack', age: 32, sex: '男' },{ name: 'jack', age: 40, sex: '女' } ]
+}
+
+{
+    const arr = [{
+        name: 'jack',
+        age: 16,
+        sex: 1
+    }, {
+        name: 'jack',
+        age: 20,
+        sex: 2
+    }]
+    arr.forEach(item => {
+        item.age = item.age * 2;
+        item.sex = item.sex === 1 ? '男' : item.sex === 2 ? '女' : '保密'
+    })
+
+    console.log('数组循环过滤', arr)
+    // [ { name: 'jack', age: 32, sex: '男' },{ name: 'jack', age: 40, sex: '女' } ]
+}
+
+{
+    const arr = [{
+        name: 'jack',
+        age: 35
+    }, {
+        name: 'mike',
+        age: 30
+    }]
+    // 根据数字排序
+    arr.sort((a, b) => {
+        return a.age - b.age // 按照age进行升序排序
+        // return b.age - a.age 按照age进行降序排序
+    })
+    console.log('sort', arr) // [ { name: 'mike', age: 30 }, { name: 'jack', age: 35 } ]
+
+    // 根据字母排序
+    arr.sort()
+    arr.reverse()
+    console.log('sort', arr) // [ { name: 'mike', age: 30 }, { name: 'jack', age: 35 } ]
+}
+
+{
+    // 数组元素为数字
+    const arr = [2, 4, 6]
+    const sum = arr.reduce((total, item) => {
+        console.log(total, item)
+        return total + item // 累加 必须赋值给变量sum
+    })
+    console.log('reduce1', sum) // 12
+
+    // 数组元素为对象 计算属性之和
+    const arr1 = [{
+        name: 'jack',
+        age: 35
+    }, {
+        name: 'mike',
+        age: 30
+    }]
+    // 根据数字排序
+    const sum1 = arr1.reduce((total, item) => {
+        return total + item.age // 累加 必须赋值给变量sum
+    }, 0) // 必须传初始值
+    console.log('reduce2', sum1) // 65
+}

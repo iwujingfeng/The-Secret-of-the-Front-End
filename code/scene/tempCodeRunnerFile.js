@@ -1,1 +1,1 @@
-console.log('Object.assign', newObj, obj) // { a: 3, b: 2, c: { d: 4 } } { a: 1, b: 2, c: { d: 4 } }
+console.log('map', newArr) // 1, 2, 3, 4, 5

@@ -143,41 +143,6 @@
 }
 
 {
-    // JSON解析
-    const obj = {
-        name: 'jack',
-        arr: [1, 2]
-    }
-    const newObj = JSON.parse(JSON.stringify(obj))
-    newObj.name = 'mike'
-    newObj.arr[1] = 5
-    console.log('JSON-obj', newObj, obj)
-    // { name: 'mike', arr: [ 1, 5 ] } { name: 'jack', arr: [ 1, 2 ] }
-
-    var arr = [{
-        name: 'jack'
-    }]
-    const newArr = JSON.parse(JSON.stringify(arr))
-    newArr[0].name = 'mike'
-    console.log('JSON-arr', newArr, arr) // [ { name: 'mike' } ] [ { name: 'jack' } ]
-}
-
-{
-    // 回头分析 递归实现深拷贝
-    function deepCopy(source) {
-        let target = Array.isArray(source) ? [] : {}
-        for (var k in source) {
-            if (typeof source[k] === 'object') {
-                target[k] = deepCopy(source[k])
-            } else {
-                target[k] = source[k]
-            }
-        }
-        return target
-    }
-}
-
-{
     // slice()方法深拷贝
     const arr = [1, {
         name: 'jack'
@@ -223,4 +188,78 @@
     newObj.age.a = 20
     newObj.sex.push(2)
     console.log('扩展运算符', newObj, obj) // { name: 'mike', age: { a: 20 }, sex: [ 1, 2 ] } { name: 'jack', age: { a: 20 }, sex: [ 1, 2 ] }
+}
+
+{
+    // JSON解析
+    const obj = {
+        name: 'jack',
+        arr: [1, 2]
+    }
+    const newObj = JSON.parse(JSON.stringify(obj))
+    newObj.name = 'mike'
+    // newObj.arr[1] = 5
+    newObj.arr = newObj
+    console.log('JSON-obj', newObj, obj)
+    // { name: 'mike', arr: [ 1, 5 ] } { name: 'jack', arr: [ 1, 2 ] }
+
+    var arr = [{
+        name: 'jack'
+    }]
+    const newArr = JSON.parse(JSON.stringify(arr))
+    newArr[0].name = 'mike'
+    console.log('JSON-arr', newArr, arr) // [ { name: 'mike' } ] [ { name: 'jack' } ]
+}
+
+{
+    // 递归实现深拷贝
+    function isObject(obj) {
+        return typeof obj === 'object' && obj != null;
+    }
+
+    function cloneDeep(sourceData, hash = new WeakMap()) {
+        if (!isObject(sourceData)) return sourceData; // 非对象返回自身
+        if (hash.has(sourceData)) return hash.get(sourceData); // 查哈希表
+        const TargetData = Array.isArray(sourceData) ? [] : {}
+        hash.set(sourceData, TargetData); // 哈希表设值
+
+        for (key in sourceData) {
+            if (Object.prototype.hasOwnProperty.call(sourceData, key)) {
+                // 如果属性的值是引用类型 进行递归
+                if (isObject(sourceData[key])) {
+                    TargetData[key] = cloneDeep(sourceData[key], hash) // 传入哈希表
+                } else {
+                    TargetData[key] = sourceData[key]
+                }
+            }
+        }
+        return TargetData
+    }
+
+    // 测试对象深拷贝
+    const obj = {
+        name: 'jack',
+        age: {
+            a: 18
+        }
+    }
+    // 设置循环引用
+    obj.sex = obj // RangeError: Maximum call stack size exceeded
+    const newObj = cloneDeep(obj)
+    newObj.age.a = 30
+    console.log('递归深拷贝', newObj, obj)
+    // { name: 'jack', age: { a: 30 }, sex: [Circular] } 
+    // { name: 'jack', age: { a: 18 }, sex: [Circular] }
+    console.log('递归深拷贝', newObj.age.a === obj.age.a, newObj.name === obj.name)
+    // false true
+
+    // 测试数组深拷贝
+    const arr = [1, {
+        name: 'jack'
+    }]
+    const newArr = cloneDeep(arr)
+    newArr[0] = 3
+    newArr[1].name = 'mike'
+    console.log('递归深拷贝', newArr, arr)
+    // [ 3, { name: 'mike' } ] [ 1, { name: 'jack' } ]
 }

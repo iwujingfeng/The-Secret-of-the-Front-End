@@ -1,4 +1,4 @@
-// arr.reduce((total,num)=>{return total + num;}) //total是初始化的总数累加
+
 
 {
     const arr = [{
@@ -173,4 +173,31 @@
         return total + item.age // 累加 必须赋值给变量sum
     }, 0) // 必须传初始值
     console.log('reduce2', sum1) // 65
+
+    // 使用reduce计算数组元素出现的次数
+    const nameList = ['Alice', 'Bob', 'Tiff', 'Bruce', 'Alice']; 
+    const num = nameList.reduce((initObj, item) => {
+        if (item in initObj) {
+            initObj[item]++
+        } else {
+            initObj[item] = 1
+        }
+        return initObj
+    }, {})
+    console.log('reduce计算数组元素出现次数',num) // { Alice: 2, Bob: 1, Tiff: 1, Bruce: 1 }
+
+    // 将二维数组转化为一维
+    const arrDouble = [[0, 1], [2, 3], [4, 5]]
+    const newArr = arrDouble.reduce((initArr, item) => {
+        return initArr.concat(item)
+    }, [])
+    console.log('二维数组转化为一维',newArr) // [ 0, 1, 2, 3, 4, 5 ]
+    
+    // 多维数组转化为一维
+    let arrs = [[0, 1], [2, 3], [4,[5,6,7]]]
+    const newArrs = function(arrs){
+       return arrs.reduce((pre,cur)=>pre.concat(Array.isArray(cur)?newArrs(cur):cur),[])
+    }
+    console.log('多维数组转化为一维', newArrs(arrs));
+    // [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }

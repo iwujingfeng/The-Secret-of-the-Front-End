@@ -6,3 +6,7 @@
 
 // url = git@github.com:iwujingfeng/The-Secret-of-the-Front-End.git
 // url = git@github.com:iwujingfeng/Front-End-Secret.git
+
+// git rm -r --cached .
+// git add .
+// git commit -m 'update .gitignore'

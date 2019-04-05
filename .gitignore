@@ -3,4 +3,5 @@ node_modules
 # dist
 example/
 docs/
+link
 .DS_Store

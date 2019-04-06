@@ -147,3 +147,14 @@
     console.log(Math.sign('5')) // 1
     console.log(Math.sign('-5')) // -1
 }
+
+{
+    // 数值转字符串
+    const num = 5
+    const num1 = 5.5
+    console.log(num.toString(), num1.toString()) // 5 5.5
+    console.log(num.toLocaleString(), num1.toLocaleString()) // 5 5.5
+    const num2 = 5000.5
+    console.log(num2.toString()) // 5000.5
+    console.log(num2.toLocaleString()) // 5,000.5
+}

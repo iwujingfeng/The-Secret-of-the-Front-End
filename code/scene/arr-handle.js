@@ -23,6 +23,11 @@
 }
 
 {
+    // 从数组中删除和添加元素
+    splice(2, 0, "Lemon", "Kiwi")
+}
+
+{
     // 从数组中获取一个指定元素
     const arr = ['jack', 'mike', 'rose']
     const roseIndex = arr.indexOf('rose')

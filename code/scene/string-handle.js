@@ -68,6 +68,8 @@
   console.log('split', strArr) // [ 'hello', 'world' ]
   const newStr = strArr.join(' ')
   console.log('join', newStr) // hello world
+  console.log('toString', strArr.toString()) // hello,world
+  console.log('toString', strArr.toLocaleString()) // hello,world
 }
 
 {
@@ -77,6 +79,18 @@
   console.log('+', str1 + ' ' + str2) // hello world
   console.log('concat', str1.concat(' ', str2)) // hello world
   console.log('``', `${str1} ${str2}, hello china`) // hello world, hello china
+}
+
+{
+  // 字符串替换
+  const str = 'hello world'
+  const newStr = str.replace('world', 'china')
+  console.log('replace', newStr) // hello china
+  const newStr1 = str.replace(/world/, 'china')
+  console.log('replace', newStr1) // hello china
+  const reg = /^(hello)\s(world)$/
+  const newStr2 = str.replace(reg, '$1')
+  console.log('replace', newStr2) // hello
 }
 
 {
@@ -111,4 +125,35 @@
   console.log(str.repeat(0)) // ''
   console.log(str.repeat(3), str) // yesyesyes yes
   console.log(str.repeat('3')) // yesyesyes
+}
+
+{
+  // 字符串去除空格
+  const str = ' hello world '
+  const newStr = str.trim()
+  console.log('trim', newStr) // 'hello world'
+
+  const str1 = ' hello world '
+  const newStr1 = str1.trimLeft()
+  console.log('trimLeft', newStr1) // 'hello world '
+
+  const str2 = ' hello world '
+  const newStr2 = str2.trimRight()
+  console.log('trimRight', newStr2) // ' hello world'
+
+  const str3 = ' hello world '
+  const newStr3 = str3.replace(/\s+/g, '')
+  console.log('replace-all', newStr3) // 'helloworld'
+
+  const str4 = ' hello world '
+  const newStr4 = str4.replace(/^\s*/g, '')
+  console.log('replace-left', newStr4) // 'hello world '
+
+  const str5 = ' hello world '
+  const newStr5 = str5.replace(/\s*$/g, '')
+  console.log('replace-right', newStr5) // ' hello world'
+
+  const str6 = ' hello world '
+  const newStr6 = str6.replace(/(^\s*)|(\s*$)/g, '')
+  console.log('replace-left-right', newStr6) // 'hello world'
 }

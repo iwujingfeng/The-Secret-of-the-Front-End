@@ -64,6 +64,7 @@
     const num = 5.56
     const num1 = 5.05
     console.log(num.toFixed(), num1.toFixed()) // 6 5
+    console.log(num.toPrecision(1), num1.toPrecision(1)) // 6 5
 
     console.log('位运算', num | 0) // 5
     console.log('位运算', num1 | 0) // 5
@@ -101,4 +102,48 @@
     // Number.isInteger
     console.log(Number.isInteger(num)) // false
     console.log(Number.isInteger(num1)) // true
+    console.log(Number.isInteger(5.0)) // true
+}
+
+
+{
+    // 安全整数与任意精度整数
+    console.log('integer', Math.pow(2, 53)) // 9007199254740992
+    console.log('integer', Math.pow(-2, 53)) // -9007199254740992
+    console.log('integer', Number.MAX_SAFE_INTEGER) // 9007199254740991
+    console.log('integer', Number.MIN_SAFE_INTEGER) // -9007199254740991
+    console.log(Number.isSafeInteger(Number.MAX_SAFE_INTEGER)) // true
+    console.log(Number.isSafeInteger(Number.MAX_SAFE_INTEGER + 1)) // false
+    console.log(Number.isSafeInteger(500)) // true
+    console.log(Number.MIN_SAFE_INTEGER <= 500 >= Number.MAX_SAFE_INTEGER) // false
+
+    console.log('integer', 9007199254740992) // 16位 9007199254740992
+    console.log('integer', 9007199254740993) // 16位 9007199254740992
+    console.log('integer', 90071992547409921) // 17位 90071992547409920
+    console.log('integer', 900719925474099212345) // 21位 900719925474099200000
+    console.log('integer', 9007199254740992123456) // 22位 9.007199254740992e+21
+}
+
+{
+    // 浮点数运算
+    console.log('float', 0.1 + 0.2 === 0.3) // false
+    console.log('float', 0.1 + 0.2) // 0.30000000000000004
+    console.log('float', (0.1 * 10 + 0.2 * 10) / 10) // 0.3
+    console.log('float', 5.12 + 0.34 === 5.46) // true
+    console.log('float', 0.00005 + 0.002 === 0.00205) // true
+
+    console.log('Number.EPSILON', Number.EPSILON) // 2.220446049250313e-16
+    console.log('Number.EPSILON', Math.abs((0.1 + 0.2) - 0.3) < Number.EPSILON) // true
+    console.log('Number.EPSILON', Math.abs(0.0001 - 0.0002) < Number.EPSILON) // false
+}
+
+{
+    // 判断是正数、负数还是零
+    console.log(Math.sign(5)) // 1
+    console.log(Math.sign(5.1)) // 1
+    console.log(Math.sign(-5)) // -1
+    console.log(Math.sign(0)) // 0
+    console.log(Math.sign(-0)) // -0
+    console.log(Math.sign('5')) // 1
+    console.log(Math.sign('-5')) // -1
 }

@@ -15,17 +15,26 @@
             e: 'jack'
         }
     }
-    const newArr = arr // 进行赋值
-    const newObj = obj
+    let newArr = arr // 进行赋值
+    let newObj = obj
 
     // 更改数据
     newArr[3] = 7
     newObj.c = 3
     newObj.d.e = 'mike'
 
-    console.log('引用数据类型赋值', newArr, arr, newArr === arr) // [ 1, 3, 5, 7 ] [ 1, 3, 5, 7 ] true
+    console.log('引用数据类型赋值', newArr, arr) // [ 1, 3, 5, 7 ] [ 1, 3, 5, 7 ]
     console.log('引用数据类型赋值', newObj, obj)
     // { a: 1, b: 2, d: { e: 'mike' }, c: 3 } { a: 1, b: 2, d: { e: 'mike' }, c: 3 }
+    console.log(newArr === arr, newObj === obj) // true true
+
+    // 赋值一个新对象
+    newObj = {
+        name: 'jack',
+        age: 34
+    }
+    console.log('引用数据类型赋值', newObj, obj)
+    // { name: 'jack', age: 34 } { a: 1, b: 2, d: { e: 'mike' }, c: 3 }
 }
 
 {

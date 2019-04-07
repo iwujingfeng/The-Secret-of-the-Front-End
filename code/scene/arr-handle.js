@@ -2,40 +2,104 @@
     // 获取元素在数组中的索引
     const arr = ['jack', 'mike', 'rose']
     const index = arr.indexOf('rose')
-    console.log('索引', index) // 2
+    console.log('indexOf', index) // 2
 
     const mikeIndex = arr.findIndex(item => item === 'mike')
-    console.log('findIndex获取索引', mikeIndex) // 1
+    console.log('findIndex', mikeIndex) // 1
+}
+
+// 数组的增删改查
+{
+    // 数组中增加元素
+    const arr = ['mike']
+    const len = arr.push('rose')
+    arr.unshift('jack')
+    console.log('add', arr, len) // [ 'jack', 'mike', 'rose' ] 2
+
+    // 从某个索引位置开始增加元素
+    arr.splice(1, 0, 'john')
+    console.log('add', arr) // [ 'jack', 'john', 'mike', 'rose' ]
+    // splice实现数组头部增加元素
+    arr.splice(0, 0, 'anne')
+    console.log('add', arr) // [ 'anne', 'jack', 'john', 'mike', 'rose' ]
+    // splice实现数组尾部增加元素
+    arr.splice(arr.length, 0, 'emmy')
+    console.log('add', arr) // [ 'anne', 'jack', 'john', 'mike', 'rose', 'emmy' ]
+
+    arr[arr.length] = 'martin'
+    console.log('add', arr) // [ 'anne', 'jack', 'john', 'mike', 'rose', 'emmy', 'martin' ]
 }
 
 {
+    const arr = ['anne', 'jack', 'john', 'mike', 'rose', 'emmy', 'martin']
+    const del = arr.shift()
+    arr.pop()
+    console.log('del', arr) // [ 'jack', 'john', 'mike', 'rose', 'emmy' ]
+    console.log('del', del) // anne
     // 从数组中删除指定索引位置的元素
-    const arr = ['jack', 'mike', 'rose']
-    const roseIndex = arr.indexOf('rose')
-    arr.splice(roseIndex, 1)
-    console.log('splice删除', arr) // [ 'jack', 'mike' ]
-    const mikeIndex = arr.indexOf('mike')
-    const delEl = arr.splice(mikeIndex, 1)
-    console.log('splice删除', arr, delEl) // [ 'jack' ] [ 'mike' ]
+    const delEl = arr.splice(1, 1)
+    console.log('del-index', arr, delEl) // [ 'jack', 'mike', 'rose', 'emmy' ] [ 'john' ]
+    console.log('del-index', arr.length) // 4
+    // splice删除数组头部元素
+    arr.splice(0, 1)
+    console.log('del', arr) // [ 'mike', 'rose', 'emmy' ]
+    // splice删除数组尾部元素
+    arr.splice(arr.length - 1, 1)
+    console.log('del', arr) // [ 'mike', 'rose' ]
 
-    // 如果将splice方法的执行结果赋值给变量，该变量返回的是删除的元素
-    // 场景：一个循环后的列表 点击某一列表项的删除按钮 获取该列表项的索引 然后删除 当然 最佳实践是直接点击获取索引
+    delete arr[0]
+    console.log('delete', arr) // [ <1 empty item>, 'rose' ]
+    console.log('delete', arr.length) // 2
+
+    // 从数组中删除指定元素
+    const arr1 = ['jack', 'mike', 'rose']
+    const roseIndex = arr1.indexOf('rose')
+    arr1.splice(roseIndex, 1)
+    console.log('del-el', arr1) // [ 'jack', 'mike' ]
 }
 
 {
-    // 从数组中删除和添加元素
-    splice(2, 0, "Lemon", "Kiwi")
+    const arr = ['jack', 'mike', 'rose']
+    // 通过索引修改
+    arr[1] = 'john'
+    console.log('modify', arr) // [ 'jack', 'john', 'rose' ]
+    // splice修改
+    arr.splice(2, 1, 'anne')
+    console.log('modify', arr) // [ 'jack', 'john', 'anne' ]
+    // 把某个元素替换为新的元素
+    const index = arr.indexOf('john')
+    arr.splice(index, 1, 'emmy')
+    console.log('modify', arr) // [ 'jack', 'emmy', 'anne' ]
+    // forEach等遍历修改
+    const arr1 = ['jack', 'john', 'mike', 'rose', 'martin']
+    arr1.forEach((item, index) => {
+        if (item.indexOf('o') !== -1) {
+            arr1[index] = 'martin'
+        }
+    })
+    console.log('modify', arr1) // [ 'jack', 'martin', 'mike', 'martin', 'martin' ]
 }
 
 {
-    // 从数组中获取一个指定元素
-    const arr = ['jack', 'mike', 'rose']
-    const roseIndex = arr.indexOf('rose')
-    const rose = arr.slice(roseIndex, roseIndex + 1)
-    console.log('获取元素', rose) // [ 'rose' ]
+    const arr = ['jack', 'john', 'mike', 'rose', 'martin']
+    console.log(arr[3]) // rose
+    console.log(arr[arr.length - 1]) // martin 获取数组最后一个值
+    function findEl(arr) {
+        return arr.find(item => {
+            return item.includes('o')
+        })
+    }
+    console.log('find', findEl(arr)) // john
+    function filterEl(arr) {
+        return arr.filter(item => {
+            return item.includes('o')
+        })
+    }
+    console.log('filter', filterEl(arr)) // [ 'john', 'rose' ]
 
-    const mike = arr.find(item => item === 'mike')
-    console.log('find获取元素', mike) // mike
+    // 解构赋值查找数组元素
+    const [a, b, ...c] = arr // 获取前面几个元素
+    console.log('...', a, b, c) // jack john [ 'mike', 'rose', 'martin' ]
 }
 
 {
@@ -53,36 +117,38 @@
         return item === 'rose'
     })
     console.log('findIndex', hasElIndex !== -1) // true
-
-    // 数组和字符串都有indexOf和includes方法
 }
 
 {
     // 判断数组是否为空
     const arr = []
-    console.log(JSON.stringify(arr) === '[]') // true
     console.log(arr.length === 0) // true
+    console.log(JSON.stringify(arr) === '[]') // true
     console.log(+arr === 0) // true
 }
 
 {
-    // 获取数组的的某些元素
-    const arr = ['jack', 'mike', 'rose', "yoyo"]
-    console.log(arr[2]) // 知道索引位置的
-    const [a, b, ...c] = arr // 获取前面几个元素
-    console.log(a, b, c) //jack mike [ 'rose', 'yoyo' ]
-    console.log(arr[arr.length - 1]) // 获取数组最后一个值
+    // 获取一个数组中的最大值和最小值
+    // 排序
+    var arr = [1, 3, 2, 5];
+    arr.sort((a, b) => a - b)
+    console.log('max', arr[arr.length - 1]) // 5
+    console.log('min', arr[0]) // 1
+
+    // apply
+    console.log('max', Math.max.apply(null, arr)) // 5
+    console.log('min', Math.min.apply(null, arr)) // 1
+
+    // 扩展运算符
+    console.log('max', Math.max(...arr)) // 5
+    console.log('min', Math.min(...arr)) // 1
 }
 
 {
-    // 动态移动数组中的元素，例如数组中对象的值变化后，对象移动到数组的顶部渲染，聊天列表功能，不能用反转
-    // 先获取要移动的元素在数组中的索引index
-    arr.splice(0, 0, arr[index]); // 0位置 删除0项 添加移动的项
-    arr.splice(index + 1, 1) // 数组length+1了 删除移动项目时 index要加1
-}
-
-{
-    // 获取一个数组中的最大值
-    var arr = [1, 2, 3];
-    var max = Math.max(...arr); // 扩展开 因为只接受一组数组 而不是数组
+    // 动态移动数组中的元素
+    const arr = ['jack', 'john', 'mike', 'rose', 'martin']
+    const currentIndex = arr.indexOf('mike')
+    arr.splice(0, 0, arr[currentIndex]);
+    arr.splice(currentIndex + 1, 1)
+    console.log('move', arr) // [ 'mike', 'jack', 'john', 'rose', 'martin' ]
 }
